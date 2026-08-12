@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trash Talker - Criar Conta</title>
+  <link rel="icon" href="/logo-talker.svg" />
+  <link rel="stylesheet" href="/css/app.css" />
+  <script>
+    (function () {
+      var theme = localStorage.getItem("theme") || "dark";
+      if (theme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-card">
+      <h1 class="auth-title">Trash Talker</h1>
+      <p class="auth-subtitle">Crie sua conta</p>
+
+      <!-- js/signup.js intercepta o envio e chama POST /api/signup. -->
+      <form class="auth-form">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="m@example.com" required />
+        </div>
+        <div class="field">
+          <label for="name">Nome</label>
+          <input id="name" name="name" type="text" placeholder="Ex: João Silva" required />
+        </div>
+        <div class="field-row-2">
+          <div class="field">
+            <label for="password">Senha</label>
+            <input id="password" name="password" type="password" required minlength="8" />
+          </div>
+          <div class="field">
+            <label for="confirm-password">Confirmar Senha</label>
+            <input id="confirm-password" type="password" required minlength="8" />
+          </div>
+        </div>
+
+        <div id="signup-error" class="field-error" hidden></div>
+
+        <button type="submit" class="btn-primary btn-block">Criar Conta</button>
+
+        <p class="auth-footer-text">
+          Já tem uma conta? <a href="/login">Entrar</a>
+        </p>
+      </form>
+    </div>
+    <p class="auth-legal">
+      Ao continuar, você concorda com os nossos
+      <a href="/terms">Termos de Uso</a> e
+      <a href="/privacy">Política de Privacidade</a>.
+    </p>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/signup.js"></script>
+</body>
+</html>
