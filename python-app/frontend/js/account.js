@@ -47,13 +47,10 @@ function initAccountForm(form, user) {
     );
   }
 
-  // --- Preenche os campos vindos do banco (nome, username, avatar) ---
+  // --- Preenche os campos vindos do banco (nome, avatar) ---
 
   var nameInput = document.getElementById("name");
   nameInput.value = user.name;
-
-  var usernameInput = document.getElementById("username");
-  if (usernameInput) usernameInput.value = user.email.split("@")[0];
 
   var avatarImageInput = document.getElementById("avatar-image-input");
   var avatarTrigger = document.getElementById("avatar-trigger");
