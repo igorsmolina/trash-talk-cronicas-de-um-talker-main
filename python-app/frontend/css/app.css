@@ -479,7 +479,8 @@ button {
   html.sidebar-collapsed .sidebar-text,
   html.sidebar-collapsed .chat-link-text,
   html.sidebar-collapsed .chat-actions,
-  html.sidebar-collapsed .user-name {
+  html.sidebar-collapsed .user-name,
+  html.sidebar-collapsed .sidebar-header .sidebar-toggle {
     display: none;
   }
 
@@ -489,10 +490,10 @@ button {
     justify-content: center;
   }
 
-  /* O botão de dentro da sidebar (ao lado do logo) já basta enquanto
-     ela está aberta - o da topbar só existe pra reabrir depois que
-     ela some. No mobile (fora deste media query) o da topbar continua
-     sempre visível, é o único jeito de abrir a gaveta. */
+  /* Colapsada, o botão de dentro da sidebar (ao lado do logo) some -
+     ver regra acima - e o da topbar assume, já que é o único jeito de
+     reabrir a partir daí. No mobile (fora deste media query) o da
+     topbar continua sempre visível, é o único jeito de abrir a gaveta. */
   .topbar .sidebar-toggle {
     display: none;
   }
@@ -548,7 +549,8 @@ button {
 .composer button {
   position: absolute;
   right: 0.5rem;
-  bottom: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
   width: 2rem;
   height: 2rem;
   padding: 0;
@@ -579,6 +581,7 @@ button {
 .chat-messages {
   flex: 1;
   overflow-y: auto;
+  scrollbar-gutter: stable;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;

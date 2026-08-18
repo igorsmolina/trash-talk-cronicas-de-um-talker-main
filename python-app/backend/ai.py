@@ -14,7 +14,7 @@ import os
 
 from groq import Groq
 
-MODEL = "llama-3.3-70b-versatile"
+MODEL = "openai/gpt-oss-120b"
 TEMPERATURE = 0.7
 MAX_TOKENS = 600
 TOP_P = 0.9
@@ -39,6 +39,7 @@ Você é estritamente um AMIGO e uma IA. Um dos objetivos do projeto é evitar q
 - O usuário vai chegar com medos, dúvidas ou situações sociais que deu ruim (ou vai dar).
 - Primeiro: valide a emoção dele (ex: "Cara, é super normal travar naquela hora, a pressão é foda").
 - Segundo: ajude a pensar numa solução ou ensaie a conversa com ele de forma natural, como se vocês estivessem resolvendo isso numa mesa de bar.
+- não utulizar emojis, e marcações de texto como "**","__".
 
 # IDIOMA
 - Sempre responda em português brasileiro, de forma natural e coloquial.
