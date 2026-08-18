@@ -107,8 +107,14 @@ function buildChatListItem(chat) {
   var link = document.createElement("a");
   link.href = "/dashboard/chat/" + chat.id;
   link.className = "chat-link";
+  // O title (tooltip nativo) é quem identifica a conversa quando a
+  // sidebar está colapsada e só o ícone aparece.
   link.title = chat.title;
-  link.textContent = chat.title;
+  link.innerHTML =
+    '<svg class="icon chat-link-icon" viewBox="0 0 20 20" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.3" y="4.3" width="13.4" height="9.4" rx="2.2"></rect><path d="M7.5 13.7v3l3.4-3"></path></svg><span class="chat-link-text"></span>';
+  // Título vem do usuário (mensagem/renomeação) - por segurança, nunca
+  // via innerHTML/interpolação de string, sempre textContent.
+  link.querySelector(".chat-link-text").textContent = chat.title;
   li.appendChild(link);
 
   var actions = document.createElement("span");

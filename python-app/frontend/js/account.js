@@ -204,6 +204,11 @@ function initAccountForm(form, user) {
           interests: interests,
         });
         successBanner.hidden = false;
+        // Recarrega a página pra refletir os dados salvos em todo lugar
+        // (ex: nome/avatar no chip da sidebar) sem precisar de F5 manual.
+        setTimeout(function () {
+          window.location.reload();
+        }, 800);
       })
       .catch(function (err) {
         errorBanner.textContent = err.message;

@@ -212,6 +212,19 @@ button {
   background: var(--primary);
   color: var(--primary-foreground);
   font-weight: 600;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease,
+    background 0.12s ease;
+}
+
+.sidebar-new-chat button:hover {
+  background: color-mix(in srgb, var(--primary) 85%, black);
+}
+
+.sidebar-new-chat button:active {
+  background: color-mix(in srgb, var(--primary) 70%, black);
+  transform: scale(0.94);
+  box-shadow: 0 1px 6px color-mix(in srgb, var(--primary) 40%, transparent);
+  opacity: 0.92;
 }
 
 .sidebar-section {
@@ -255,12 +268,23 @@ button {
 .chat-link {
   flex: 1;
   min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.5rem;
   text-decoration: none;
+  color: inherit;
+}
+
+.chat-link-icon {
+  flex-shrink: 0;
+}
+
+.chat-link-text {
+  min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: inherit;
 }
 
 .chat-actions {
@@ -432,12 +456,37 @@ button {
       border-color 0.2s ease;
   }
 
+  /* Colapsada, a sidebar não some por inteiro: vira uma trilha estreita
+     só com ícones - novo chat, histórico reduzido (cada item continua
+     um link de verdade pra conversa, só sem o título; o título some
+     mas fica disponível como tooltip nativo ao passar o mouse),
+     Configurações e a foto de perfil. */
   html.sidebar-collapsed .sidebar {
-    width: 0;
-    padding-left: 0;
-    padding-right: 0;
-    border-right-color: transparent;
+    width: 4.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     overflow: hidden;
+  }
+
+  html.sidebar-collapsed .sidebar-header,
+  html.sidebar-collapsed .sidebar-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  html.sidebar-collapsed .brand-name,
+  html.sidebar-collapsed .sidebar-label,
+  html.sidebar-collapsed .sidebar-text,
+  html.sidebar-collapsed .chat-link-text,
+  html.sidebar-collapsed .chat-actions,
+  html.sidebar-collapsed .user-name {
+    display: none;
+  }
+
+  html.sidebar-collapsed .chat-link,
+  html.sidebar-collapsed .sidebar-secondary a,
+  html.sidebar-collapsed .user-chip {
+    justify-content: center;
   }
 
   /* O botão de dentro da sidebar (ao lado do logo) já basta enquanto
